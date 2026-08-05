@@ -12,31 +12,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ProdutoDTO {
+public class ProdutoResponseDTO {
 
     private Long id;
 
-    @NotBlank(message = "O campo nome é requerido")
-    @Size(min = 3, max = 100, message = "O campo nome deve ter entre 3 e 100 caracteres")
     private String nome;
 
-    @NotBlank(message = "O campo descrição é requerido")
-    @Size(min = 10, message = "A descrição deve ter no mínimo 10 caracteres")
     private String descricao;
 
-    @NotNull(message = "O campo valor é requerido")
-    @Positive(message = "O valor deve ser um número positivo e maior que zero")
     private Double valor;
 
-    @NotNull(message = "Campo categoria é requerido")
-    private CategoriaDTO categoria;
+    private CategoriaResponseDTO categoria;
 
-    public ProdutoDTO(Produto produto) {
+    public ProdutoResponseDTO(Produto produto) {
        id = produto.getId();
        nome = produto.getNome();
        descricao = produto.getDescricao();
        valor = produto.getValor();
 
-       categoria = new CategoriaDTO(produto.getCategoria());
+       categoria = new CategoriaResponseDTO(produto.getCategoria());
     }
 }
